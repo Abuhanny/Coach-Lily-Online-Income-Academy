@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, MessageCircle } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
@@ -26,10 +27,17 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50">
       <div className="glass mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-full px-5 py-3 sm:px-6">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-gradient font-display text-sm font-bold text-white">
-            CL
-          </span>
+        <Link href="/" className="flex items-center gap-3">
+          <div className="relative h-10 w-10 overflow-hidden rounded-full">
+            <Image
+              src="/images/logo.png"
+              alt="Coach Lily Online Income Academy Logo"
+              fill
+              priority
+              className="object-cover"
+            />
+          </div>
+
           <span className="hidden font-display text-sm font-semibold tracking-tight sm:block">
             Coach Lily <span className="text-pink">Online Income Academy</span>
           </span>
@@ -56,7 +64,9 @@ export default function Navbar() {
           >
             <MessageCircle size={14} /> Community
           </a>
+
           <ThemeToggle />
+
           <button
             aria-label="Open menu"
             className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 dark:border-white/15 lg:hidden"
@@ -84,9 +94,14 @@ export default function Navbar() {
               className="glass-strong ml-auto flex h-full w-72 flex-col gap-1 p-6"
               onClick={(e) => e.stopPropagation()}
             >
-              <button aria-label="Close menu" className="mb-4 self-end" onClick={() => setOpen(false)}>
+              <button
+                aria-label="Close menu"
+                className="mb-4 self-end"
+                onClick={() => setOpen(false)}
+              >
                 <X size={22} />
               </button>
+
               {links.map((l) => (
                 <Link
                   key={l.href}
@@ -97,6 +112,7 @@ export default function Navbar() {
                   {l.label}
                 </Link>
               ))}
+
               <a
                 href={socialLinks.whatsapp}
                 target="_blank"

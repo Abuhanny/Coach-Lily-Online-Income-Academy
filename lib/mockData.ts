@@ -24,31 +24,31 @@ export const cohorts: Cohort[] = [
     id: 'january-cohort',
     name: 'January Cohort',
     month: 'January',
-    startDate: '2027-01-12',
-    endDate: '2027-01-18',
+    startDate: '2027-01',
+    endDate: '2027-01',
     status: 'closed',
-    seatsTotal: 60,
-    seatsTaken: 60,
+    seatsTotal: 200,
+    seatsTaken: 0,
   },
   {
     id: 'april-cohort',
     name: 'April Cohort',
     month: 'April',
-    startDate: '2027-04-13',
-    endDate: '2027-04-19',
-    status: 'open',
-    seatsTotal: 60,
-    seatsTaken: 34,
+    startDate: '2027-04',
+    endDate: '2027-04',
+    status: 'closed',
+    seatsTotal: 200,
+    seatsTaken: 0,
   },
   {
     id: 'august-cohort',
     name: 'August Cohort',
     month: 'August',
-    startDate: '2027-08-10',
-    endDate: '2027-08-16',
+    startDate: '2026-08-24',
+    endDate: '2026-08-30',
     status: 'upcoming',
-    seatsTotal: 60,
-    seatsTaken: 2,
+    seatsTotal: 200,
+    seatsTaken: 17,
   },
 ];
 
@@ -178,22 +178,22 @@ export interface Trainer {
 
 export const trainers: Trainer[] = [
   {
-    name: 'Coach Lily',
-    photo: '/images/trainer-lily.jpg',
-    bio: 'Founder and lead trainer of the academy. Over 8 years helping beginners build real online careers, from virtual assistance to personal branding.',
-    specialization: 'Career Strategy & Personal Branding',
-    skills: ['Personal Branding', 'Career Coaching', 'Content Strategy'],
-    linkedin: 'https://linkedin.com/in/coachlily',
-    email: 'lily@coachlilyacademy.com',
+    name: 'Nnadozie Nancy',
+    photo: '/images/nancy.png',
+    bio: 'Trainer focused on on demand remote roles - Virtual assitant, social media management, customer support, telemarketing, cold calling',
+    specialization: 'Career Strategy & Remote Skills',
+    skills: ['Virtual Assistant', 'Customer Support', 'Telemarketing'],
+    linkedin: 'https://www.linkedin.com/in/nnadozie-nancy-4a0b3b1a6/',
+    email: 'nnadozienancy@gmail.com',
   },
   {
-    name: 'David Chukwu',
-    photo: '/images/trainer-david.jpg',
-    bio: 'Co-trainer focused on design and technical skills — UI/UX, graphic design, and video editing for beginners.',
-    specialization: 'Design & Creative Skills',
-    skills: ['UI/UX Design', 'Graphic Design', 'Video Editing'],
-    linkedin: 'https://linkedin.com/in/davidchukwu',
-    email: 'david@coachlilyacademy.com',
+    name: 'Abubakar Hannatu',
+    photo: '/images/hannatu.jpeg',
+    bio: 'Trainer focused on writing, design and technical skills — Ghostwriting, Online Platform Writing, UI/UX, graphic design, and video editing for beginners.',
+    specialization: 'Writing, Design & Creative Skills',
+    skills: ['UI/UX & Graphic Design', 'Writing', 'Video Editing'],
+    linkedin: 'https://www.linkedin.com/in/hannatu-abubakar-5342922ba/',
+    email: 'abuhannatu.va@gmail.com',
   },
 ];
 
@@ -208,28 +208,28 @@ export interface TeamMember {
 
 export const team: TeamMember[] = [
   {
-    name: 'Amaka Obi',
-    photo: '/images/team-amaka.jpg',
+    name: 'Mshelia Nina Sikari',
+    photo: '/images/nina.jpeg',
     role: 'Operations Manager',
     bio: 'Runs the day-to-day of the academy — cohort logistics, payments, and student support.',
-    contact: 'ops@coachlilyacademy.com',
+    contact: 'mshelianina0@gmail.com',
   },
   {
-    name: 'Grace Adeyemi',
-    photo: '/images/team-grace.jpg',
+    name: 'Chidozie Quincy Chiamaka',
+    photo: '/images/amaka.jpeg',
     role: 'Social Media Manager',
     socials: [
       { label: 'Instagram', url: 'https://instagram.com' },
-      { label: 'TikTok', url: 'https://tiktok.com' },
+      { label: 'Facebook', url: 'https://www.facebook.com/share/1BgftgaJDF/' },
     ],
   },
   {
-    name: 'Tunde Bakare',
-    photo: '/images/team-tunde.jpg',
-    role: 'Community Manager',
+    name: 'David Bamidele',
+    photo: '/images/dave.jpeg',
+    role: 'Social Media Manager',
     socials: [
-      { label: 'WhatsApp', url: 'https://wa.me/2348000000000' },
-      { label: 'X', url: 'https://x.com' },
+      { label: 'WhatsApp', url: 'https://wa.me/23489064469514' },
+      { label: 'Tiktok', url: 'https://www.tiktok.com/@neymar_simp?_r=1&_t=ZS-97kyvjQldqa' },
     ],
   },
 ];
@@ -246,13 +246,18 @@ export const pricing = [
 ];
 
 export const socialLinks = {
-  whatsapp: 'https://wa.me/2348000000000',
-  instagram: 'https://instagram.com/coachlilyacademy',
+  whatsapp: 'https://chat.whatsapp.com/FlXEmixC5Uj86J0kdzYj14',
+  instagram: 'https://www.instagram.com/coachlily_academy/?hl=en',
   facebook: 'https://facebook.com/coachlilyacademy',
   tiktok: 'https://tiktok.com/@coachlilyacademy',
   linkedin: 'https://linkedin.com/company/coachlilyacademy',
   youtube: 'https://youtube.com/@coachlilyacademy',
   x: 'https://x.com/coachlilyacademy',
-  email: 'hello@coachlilyacademy.com',
+  email: 'coachlilyacademy@gmail.com',
   phone: '+234 800 000 0000',
 };
+
+
+git add .
+git commit
+git push
