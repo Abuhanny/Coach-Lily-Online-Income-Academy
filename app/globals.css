@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Fraunces', serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink dark:bg-ink dark:text-paper transition-colors duration-300 font-sans;
+}
+
+::selection {
+  @apply bg-pink/30;
+}
+
+/* Glassmorphism panel, reused across cards, nav, modals */
+.glass {
+  @apply bg-white/60 dark:bg-white/5 backdrop-blur-glass border border-white/40 dark:border-white/10 shadow-glass dark:shadow-glass-dark;
+}
+
+.glass-strong {
+  @apply bg-white/80 dark:bg-ink-soft/80 backdrop-blur-glass border border-white/50 dark:border-white/10 shadow-glass dark:shadow-glass-dark;
+}
+
+.text-gradient {
+  @apply bg-brand-gradient bg-clip-text text-transparent;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-gradient px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-pink/20 transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98];
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 dark:border-white/20 px-6 py-3 text-sm font-semibold text-ink dark:text-white transition-colors duration-200 hover:border-pink hover:text-pink;
+}
+
+.eyebrow {
+  @apply inline-flex items-center gap-2 rounded-full bg-pink/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-pink-deep dark:text-pink-soft;
+}
+
+.section {
+  @apply mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
