@@ -258,6 +258,3 @@ export const socialLinks = {
 };
 
 
-git add .
-git commit
-git push
