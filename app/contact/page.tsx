@@ -1,12 +1,78 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Mail, Phone, Clock, MessageCircle, Check } from 'lucide-react';
-import { pricing, socialLinks } from '@/lib/mockData';
+import { pricing, socialLinks, courses } from '@/lib/mockData';
+
+function ContactForm() {
+  const searchParams = useSearchParams();
+  const prefilledCourse = searchParams.get('course') || '';
+
+  const [sent, setSent] = useState(false);
+  const [track, setTrack] = useState(prefilledCourse);
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        setSent(true);
+      }}
+      className="glass-strong rounded-3xl p-7"
+    >
+      {sent && (
+        <div className="mb-5 flex items-center gap-2 rounded-xl bg-emerald-500/10 px-4 py-3 text-sm font-medium text-emerald-600">
+          <Check size={16} /> Message sent — we&rsquo;ll reply within 24 hours.
+        </div>
+      )}
+
+      {!sent && prefilledCourse && (
+        <div className="mb-5 rounded-xl bg-pink/10 px-4 py-3 text-sm font-medium text-pink-deep">
+          Enrolling in: <strong>{prefilledCourse}</strong>
+        </div>
+      )}
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label className="text-xs font-semibold text-ink/50 dark:text-white/50">Full name</label>
+          <input required className="mt-1.5 w-full rounded-xl border border-ink/10 bg-transparent px-4 py-2.5 text-sm outline-none focus:border-pink dark:border-white/15" />
+        </div>
+        <div>
+          <label className="text-xs font-semibold text-ink/50 dark:text-white/50">Email</label>
+          <input required type="email" className="mt-1.5 w-full rounded-xl border border-ink/10 bg-transparent px-4 py-2.5 text-sm outline-none focus:border-pink dark:border-white/15" />
+        </div>
+      </div>
+
+      <div className="mt-4">
+        <label className="text-xs font-semibold text-ink/50 dark:text-white/50">Track of interest</label>
+        <select
+          value={track}
+          onChange={(e) => setTrack(e.target.value)}
+          className="mt-1.5 w-full rounded-xl border border-ink/10 bg-transparent px-4 py-2.5 text-sm outline-none focus:border-pink dark:border-white/15"
+        >
+          <option value="">Not sure yet</option>
+          {courses.map((c) => (
+            <option key={c.slug} value={c.title}>{c.title}</option>
+          ))}
+        </select>
+      </div>
+
+      <div className="mt-4">
+        <label className="text-xs font-semibold text-ink/50 dark:text-white/50">Message</label>
+        <textarea rows={4} className="mt-1.5 w-full rounded-xl border border-ink/10 bg-transparent px-4 py-2.5 text-sm outline-none focus:border-pink dark:border-white/15" />
+      </div>
+
+      <button type="submit" className="btn-primary mt-5 w-full">
+        {track ? `Request a seat — ${track}` : 'Send Message'}
+      </button>
+      <p className="mt-3 text-center text-xs text-ink/40 dark:text-white/40">
+        Demo form — connect to an email service (e.g. Formspree, EmailJS) to receive real submissions.
+      </p>
+    </form>
+  );
+}
 
 export default function ContactPage() {
-  const [sent, setSent] = useState(false);
-
   return (
     <div className="section">
       <span className="eyebrow">Get in touch</span>
@@ -47,37 +113,9 @@ export default function ContactPage() {
           </a>
         </div>
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            setSent(true);
-          }}
-          className="glass-strong rounded-3xl p-7"
-        >
-          {sent && (
-            <div className="mb-5 flex items-center gap-2 rounded-xl bg-emerald-500/10 px-4 py-3 text-sm font-medium text-emerald-600">
-              <Check size={16} /> Message sent — we&rsquo;ll reply within 24 hours.
-            </div>
-          )}
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <label className="text-xs font-semibold text-ink/50 dark:text-white/50">Full name</label>
-              <input required className="mt-1.5 w-full rounded-xl border border-ink/10 bg-transparent px-4 py-2.5 text-sm outline-none focus:border-pink dark:border-white/15" />
-            </div>
-            <div>
-              <label className="text-xs font-semibold text-ink/50 dark:text-white/50">Email</label>
-              <input required type="email" className="mt-1.5 w-full rounded-xl border border-ink/10 bg-transparent px-4 py-2.5 text-sm outline-none focus:border-pink dark:border-white/15" />
-            </div>
-          </div>
-          <div className="mt-4">
-            <label className="text-xs font-semibold text-ink/50 dark:text-white/50">Message</label>
-            <textarea required rows={4} className="mt-1.5 w-full rounded-xl border border-ink/10 bg-transparent px-4 py-2.5 text-sm outline-none focus:border-pink dark:border-white/15" />
-          </div>
-          <button type="submit" className="btn-primary mt-5 w-full">Send Message</button>
-          <p className="mt-3 text-center text-xs text-ink/40 dark:text-white/40">
-            Demo form — connect to an email service (e.g. Formspree, EmailJS) to receive real submissions.
-          </p>
-        </form>
+        <Suspense fallback={<div className="glass-strong rounded-3xl p-7 text-sm text-ink/50">Loading form&hellip;</div>}>
+          <ContactForm />
+        </Suspense>
       </div>
 
       {/* Pricing */}

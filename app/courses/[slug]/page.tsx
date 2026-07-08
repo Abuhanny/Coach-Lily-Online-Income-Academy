@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import * as Icons from 'lucide-react';
 import { courses } from '@/lib/mockData';
 
@@ -32,7 +33,9 @@ export default function CourseDetailPage({ params }: { params: { slug: string } 
       <h1 className="mt-5 max-w-2xl font-display text-3xl font-semibold sm:text-4xl">{course.title}</h1>
       <p className="mt-4 max-w-2xl text-ink/60 dark:text-white/60">{course.overview}</p>
 
-      <button className="btn-primary mt-7">Enroll Now</button>
+      <Link href={`/contact?course=${encodeURIComponent(course.title)}`} className="btn-primary mt-7 inline-flex">
+        Enroll Now
+      </Link>
 
       <div className="mt-14 grid gap-6 sm:grid-cols-2">
         {blocks.map((b) => (
